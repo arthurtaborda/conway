@@ -1,5 +1,5 @@
 {
-  "interval":500,
+  "interval":100,
   "length":50,
   "height":50,
   "points": [

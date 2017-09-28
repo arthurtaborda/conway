@@ -33,7 +33,7 @@ public class ConwaysGame extends Application {
         int height = config.getHeight();
         List<Point> initialAlive = config.getPoints();
 
-        this.table = new InefficientTable(length, height, initialAlive, eventBus);
+        this.table = new EfficientTable(length, height, initialAlive, eventBus);
         BoardView boardView = new BoardView(length, height, initialAlive);
         eventBus.subscribe(CellDiesEvent.class, boardView.new CellDiesEventHandler());
         eventBus.subscribe(CellLivesEvent.class, boardView.new CellLivesEventHandler());
@@ -42,7 +42,6 @@ public class ConwaysGame extends Application {
 
         stage.setScene(new Scene(boardView));
         stage.show();
-        stage.setAlwaysOnTop(true);
     }
 
     @Override

@@ -8,7 +8,8 @@ public class CellView extends Rectangle {
     public CellView(boolean alive) {
         this.setWidth(10);
         this.setHeight(10);
-        this.setStrokeWidth(1);
+        this.setStrokeWidth(0.4);
+        this.setStroke(Color.BLACK);
         if (alive) {
             toAlive();
         } else {
@@ -16,13 +17,11 @@ public class CellView extends Rectangle {
         }
     }
 
-    void toAlive() {
+    synchronized void toAlive() {
         this.setFill(Color.BLACK);
-        this.setStroke(Color.WHITE);
     }
 
-    void toDead() {
+    synchronized void toDead() {
         this.setFill(Color.WHITE);
-        this.setStroke(Color.BLACK);
     }
 }

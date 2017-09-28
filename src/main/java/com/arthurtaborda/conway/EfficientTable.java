@@ -26,7 +26,7 @@ public class EfficientTable implements Table {
     }
 
     @Override
-    public void tick() {
+    public synchronized void tick() {
         Queue<Point> dieEvents = new LinkedList<>();
         Queue<Point> liveEvents = new LinkedList<>();
         Map<Point, Integer> pointsToAnalyse = getPointsToAnalyse();
