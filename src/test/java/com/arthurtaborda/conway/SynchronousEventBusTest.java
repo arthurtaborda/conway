@@ -1,4 +1,4 @@
-package com.arthurtaborda.outfittery;
+package com.arthurtaborda.conway;
 
 import org.junit.Test;
 

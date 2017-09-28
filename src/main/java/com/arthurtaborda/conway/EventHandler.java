@@ -1,4 +1,4 @@
-package com.arthurtaborda.outfittery;
+package com.arthurtaborda.conway;
 
 public interface EventHandler<T> {
 

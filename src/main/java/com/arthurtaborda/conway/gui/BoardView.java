@@ -1,9 +1,9 @@
-package com.arthurtaborda.outfittery.gui;
+package com.arthurtaborda.conway.gui;
 
-import com.arthurtaborda.outfittery.CellDiesEvent;
-import com.arthurtaborda.outfittery.CellLivesEvent;
-import com.arthurtaborda.outfittery.EventHandler;
-import com.arthurtaborda.outfittery.Point;
+import com.arthurtaborda.conway.CellDiesEvent;
+import com.arthurtaborda.conway.CellLivesEvent;
+import com.arthurtaborda.conway.EventHandler;
+import com.arthurtaborda.conway.Point;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 

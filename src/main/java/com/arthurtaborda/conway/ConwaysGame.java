@@ -1,6 +1,6 @@
-package com.arthurtaborda.outfittery;
+package com.arthurtaborda.conway;
 
-import com.arthurtaborda.outfittery.gui.BoardView;
+import com.arthurtaborda.conway.gui.BoardView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Application;
 import javafx.scene.Scene;

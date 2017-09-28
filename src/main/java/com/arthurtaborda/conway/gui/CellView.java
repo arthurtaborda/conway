@@ -1,4 +1,4 @@
-package com.arthurtaborda.outfittery.gui;
+package com.arthurtaborda.conway.gui;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
