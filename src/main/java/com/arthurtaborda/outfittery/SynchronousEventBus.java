@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 
 import static java.util.concurrent.CompletableFuture.runAsync;
 
-public class AsyncEventBus implements EventBus {
+public class SynchronousEventBus implements EventBus {
 
     private final Map<Class, List<EventHandler>> eventHandlers;
 
-    public AsyncEventBus() {
+    public SynchronousEventBus() {
         eventHandlers = new HashMap<>();
     }
 
@@ -26,9 +26,8 @@ public class AsyncEventBus implements EventBus {
     @Override
     public <T> void send(T event) {
         List<EventHandler> handlers = eventHandlers.get(event.getClass());
-        List<CompletableFuture> futures = handlers.stream()
-                                                  .map(eventHandler -> runAsync(() -> eventHandler.handle(event)))
-                                                  .collect(Collectors.toList());
-        CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()])).join();
+        if (handlers != null) {
+            handlers.forEach(handler -> handler.handle(event));
+        }
     }
 }

@@ -4,11 +4,11 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AsyncEventBusTest {
+public class SynchronousEventBusTest {
 
     @Test
     public void whenSingleSubscribe_getEvent() {
-        AsyncEventBus eventBus = new AsyncEventBus();
+        SynchronousEventBus eventBus = new SynchronousEventBus();
         Object event = new Object();
         EventHandlerSpy eventHandler = new EventHandlerSpy();
 
@@ -20,7 +20,7 @@ public class AsyncEventBusTest {
 
     @Test
     public void whenMultipleSubscribe_getEventInAll() {
-        AsyncEventBus eventBus = new AsyncEventBus();
+        SynchronousEventBus eventBus = new SynchronousEventBus();
         Object event = new Object();
         EventHandlerSpy eventHandler1 = new EventHandlerSpy();
         EventHandlerSpy eventHandler2 = new EventHandlerSpy();

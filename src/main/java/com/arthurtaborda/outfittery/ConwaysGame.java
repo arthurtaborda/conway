@@ -3,7 +3,6 @@ package com.arthurtaborda.outfittery;
 import com.arthurtaborda.outfittery.gui.BoardView;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -11,8 +10,6 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
-import static java.util.Arrays.asList;
 
 public class ConwaysGame extends Application {
 
@@ -27,7 +24,7 @@ public class ConwaysGame extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        this.eventBus = new AsyncEventBus();
+        this.eventBus = new SynchronousEventBus();
         Parameters parameters = getParameters();
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -36,7 +33,7 @@ public class ConwaysGame extends Application {
         int height = config.getHeight();
         List<Point> initialAlive = config.getPoints();
 
-        this.table = new Table(length, height, initialAlive, eventBus);
+        this.table = new InefficientTable(length, height, initialAlive, eventBus);
         BoardView boardView = new BoardView(length, height, initialAlive);
         eventBus.subscribe(CellDiesEvent.class, boardView.new CellDiesEventHandler());
         eventBus.subscribe(CellLivesEvent.class, boardView.new CellLivesEventHandler());

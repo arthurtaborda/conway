@@ -8,7 +8,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-public class TableTest {
+public abstract class GameSpecification {
 
     private EventBusSpy eventBus;
 
@@ -16,6 +16,8 @@ public class TableTest {
     public void setUp() throws Exception {
         eventBus = new EventBusSpy();
     }
+
+    protected abstract Table getTable(List<Point> initialAlive, EventBusSpy eventBus);
 
     @Test
     public void whenLiveCellHasNoNeighbours_diesInNextTick() {
@@ -25,10 +27,6 @@ public class TableTest {
         table.tick();
 
         assertThat(eventBus.getEventsSent()).hasSize(1).contains(new CellDiesEvent(point));
-    }
-
-    private Table getTable(List<Point> initialAlive, EventBusSpy eventBus) {
-        return new Table(10, 10, initialAlive, eventBus);
     }
 
     @Test

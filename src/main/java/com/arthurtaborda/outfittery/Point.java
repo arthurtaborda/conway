@@ -7,10 +7,12 @@ public class Point {
 
     private final int x;
     private final int y;
+    private final int hash;
 
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
+        this.hash = Objects.hash(x, y);
     }
 
     public int x() {
@@ -70,7 +72,7 @@ public class Point {
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return hash;
     }
 
     @Override
