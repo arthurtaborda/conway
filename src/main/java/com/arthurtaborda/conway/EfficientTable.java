@@ -58,21 +58,13 @@ public class EfficientTable implements Table {
         for (Point point : alivePoints) {
             List<Point> neighbours = getNeighbours(point);
             pointsToAnalyse.put(point, aliveNeighbours(neighbours));
-            addNeighbours(pointsToAnalyse, neighbours);
+            neighbours.forEach(neighbour -> {
+                if(!pointsToAnalyse.containsKey(neighbour)) {
+                    pointsToAnalyse.put(neighbour, aliveNeighbours(getNeighbours(neighbour)));
+                }
+            });
         }
         return pointsToAnalyse;
-    }
-
-    private void addNeighbours(Map<Point, Integer> pointsToAnalyse, List<Point> neighbours) {
-        neighbours.forEach(neighbour -> {
-            List<Point> newNeighbours = getNeighbours(neighbour);
-            if (!pointsToAnalyse.containsKey(neighbour)) {
-                pointsToAnalyse.put(neighbour, aliveNeighbours(newNeighbours));
-                if (isAlive(neighbour)) {
-                    addNeighbours(pointsToAnalyse, newNeighbours);
-                }
-            }
-        });
     }
 
     private int aliveNeighbours(List<Point> neighbours) {
